@@ -60,10 +60,10 @@ messageForm.addEventListener("submit", async (e) => {
   }
 
   // Exibir mensagem enviada no chat
-  const messageDiv = document.createElement("div");
-  messageDiv.classList.add("message", "sent");
-  messageDiv.innerHTML = `<strong>Você:</strong> ${text}`;
-  chat.appendChild(messageDiv);
+  //const messageDiv = document.createElement("div");
+  //messageDiv.classList.add("message", "sent");
+  //messageDiv.innerHTML = `<strong>Você:</strong> ${text}`;
+  //chat.appendChild(messageDiv);
 
   // Scroll automático para a última mensagem
   chat.scrollTop = chat.scrollHeight;
