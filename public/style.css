@@ -1,25 +1,106 @@
 /* Estilo geral */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: #0a1014;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  color: #fff;
+}
+
+/* Tela inicial (menu) */
+.menu-container {
+  text-align: center;
+}
+
+.number-input,
+.message-input {
+  margin: 20px 0;
+}
+
+.number-input label,
+.message-input label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.number-input input,
+.message-input textarea {
+  padding: 10px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.message-input textarea {
+  height: 100px;
+  resize: none;
+}
+
+.create-chat-btn {
+  padding: 15px 30px;
+  background-color: #056162;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.create-chat-btn:hover {
+  background-color: #065e56;
+}
+
+/* Ocultar elementos */
+.hidden {
+  display: none;
 }
 
 /* Container do chat */
 .chat-container {
-  background: #fff;
+  background: #1e2a33;
   width: 400px;
   height: 600px;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+}
+
+/* Cabeçalho do chat */
+.chat-header {
+  background: #2a3942;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #3c4f5a;
+}
+
+.contact-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.contact-number {
+  font-size: 14px;
+  color: #aebac1;
 }
 
 /* Área do chat */
@@ -27,7 +108,7 @@ body {
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  background-color: #e5ddd5;
+  background-color: #121b22;
   display: flex;
   flex-direction: column;
 }
@@ -43,60 +124,52 @@ body {
 }
 
 .message.sent {
-  background-color: #dcf8c6;
+  background-color: #056162;
   align-self: flex-end;
   text-align: right;
+  color: #fff;
 }
 
 .message.received {
-  background-color: #fff;
+  background-color: #202c33;
   align-self: flex-start;
   text-align: left;
+  color: #d1d7db;
 }
 
 /* Formulário de envio */
 .message-form {
   display: flex;
   padding: 10px;
-  background-color: #f4f4f9;
-  border-top: 1px solid #ccc;
+  background-color: #2a3942;
+  border-top: 1px solid #3c4f5a;
 }
 
 .message-form input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none;
+  border-radius: 20px;
+  background-color: #3c4f5a;
+  color: #fff;
   margin-right: 10px;
+  outline: none;
+}
+
+.message-form input::placeholder {
+  color: #aebac1;
 }
 
 .message-form button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #056162;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .message-form button:hover {
-  background-color: #0056b3;
-}
-/* Campo para o número do destinatário */
-.number-input {
-  padding: 10px;
-  background-color: #f4f4f9;
-  border-bottom: 1px solid #ccc;
-}
-
-.number-input label {
-  font-size: 14px;
-  margin-right: 10px;
-}
-
-.number-input input {
-  padding: 8px;
-  width: calc(100% - 120px);
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: #065e56;
 }

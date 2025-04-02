@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="chat-container">
-      <!-- Campo para definir o número do destinatário -->
+    <!-- Tela inicial -->
+    <div id="menu" class="menu-container">
+      <h1>Bem-vindo ao Atendimento</h1>
       <div class="number-input">
         <label for="number">Número do destinatário:</label>
         <input
@@ -18,7 +19,39 @@
           required
         />
       </div>
+      <div class="message-input">
+        <label for="initialMessage">Mensagem inicial:</label>
+        <textarea
+          id="initialMessage"
+          placeholder="Digite a mensagem inicial..."
+          required
+        ></textarea>
+      </div>
+      <button id="createChat" class="create-chat-btn">Criar Atendimento</button>
+    </div>
+
+    <!-- Tela de conversa -->
+    <div id="chatScreen" class="chat-container hidden">
+      <!-- Cabeçalho com foto e informações do contato -->
+      <header class="chat-header">
+        <img
+          id="contactPhoto"
+          class="contact-photo"
+          src=""
+          alt="Foto do contato"
+        />
+        <div class="contact-info">
+          <span id="contactName" class="contact-name">Nome do Contato</span>
+          <span id="contactNumber" class="contact-number"
+            >Número do Contato</span
+          >
+        </div>
+      </header>
+
+      <!-- Área do chat -->
       <div id="chat" class="chat"></div>
+
+      <!-- Formulário para enviar mensagens -->
       <form id="messageForm" class="message-form">
         <input
           type="text"
@@ -29,6 +62,7 @@
         <button type="submit">Enviar</button>
       </form>
     </div>
+
     <script src="scripts.js"></script>
   </body>
 </html>
