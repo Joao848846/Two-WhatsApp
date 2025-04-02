@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atendimento</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <!-- Campo para definir o número do destinatário -->
+      <div class="number-input">
+        <label for="number">Número do destinatário:</label>
+        <input
+          type="text"
+          id="number"
+          placeholder="Ex: 5511912345678"
+          required
+        />
+      </div>
+      <div id="chat" class="chat"></div>
+      <form id="messageForm" class="message-form">
+        <input
+          type="text"
+          id="text"
+          placeholder="Digite sua mensagem..."
+          required
+        />
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>

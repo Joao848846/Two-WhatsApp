@@ -1,0 +1,102 @@
+/* Estilo geral */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container do chat */
+.chat-container {
+  background: #fff;
+  width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Área do chat */
+.chat {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #e5ddd5;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mensagens */
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+  word-wrap: break-word;
+  display: inline-block;
+}
+
+.message.sent {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.message.received {
+  background-color: #fff;
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* Formulário de envio */
+.message-form {
+  display: flex;
+  padding: 10px;
+  background-color: #f4f4f9;
+  border-top: 1px solid #ccc;
+}
+
+.message-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.message-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.message-form button:hover {
+  background-color: #0056b3;
+}
+/* Campo para o número do destinatário */
+.number-input {
+  padding: 10px;
+  background-color: #f4f4f9;
+  border-bottom: 1px solid #ccc;
+}
+
+.number-input label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.number-input input {
+  padding: 8px;
+  width: calc(100% - 120px);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
