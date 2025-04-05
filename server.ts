@@ -2,9 +2,11 @@ import express from "express";
 import { sendTextMessage } from "./messageService";
 import { WebSocketServer } from "ws";
 import axios from "axios";
+import cors from "cors";
 
 const app: express.Application = express();
 const PORT = 3000;
+app.use(cors()); // ADICIONE ISSO
 
 // Middleware para processar JSON
 app.use(express.json());
@@ -42,13 +44,11 @@ app.post("/send-message", async (req, res) => {
   try {
     console.log("Chamando o serviço sendTextMessage para enviar a mensagem...");
 
-    // Chama o serviço sendTextMessage
     const apiResponse = await sendTextMessage({ number, text });
 
     console.log("Resposta da API externa recebida com sucesso:");
     console.log(JSON.stringify(apiResponse, null, 2));
 
-    // Retorna o resultado da API externa para o cliente
     res.json({
       message: "Mensagem enviada com sucesso!",
       data: apiResponse,
@@ -71,18 +71,17 @@ app.post("/webhook/*", (req, res) => {
 
   console.log("Evento recebido:", event);
 
-  // Verificar se o evento contém uma mensagem
   if (event.data && event.data.message) {
     const messageData = {
       sender: event.data.sender,
       pushName: event.data.pushName,
       message: event.data.message.conversation || "Mensagem não encontrada",
       timestamp: event.data.messageTimestamp,
+      remoteJid: event.data.remoteJid || event.data.key?.remoteJid,
     };
 
     console.log("Mensagem processada:", messageData);
 
-    // Enviar a mensagem processada para todos os clientes conectados via WebSocket
     clients.forEach((client) => {
       if (client.readyState === client.OPEN) {
         client.send(
@@ -99,6 +98,13 @@ app.post("/webhook/*", (req, res) => {
 
 // Middleware para capturar todas as outras requisições
 app.all("*", (req, res) => {
+  const ignoredPaths = ["/favicon.ico", "/script.js", "/style.css"];
+
+  if (ignoredPaths.includes(req.path)) {
+    console.log("Ignorando requisição estática:", req.path);
+    return res.status(204).end();
+  }
+
   const event = {
     method: req.method,
     path: req.path,
@@ -108,7 +114,6 @@ app.all("*", (req, res) => {
 
   console.log("Requisição recebida:", event);
 
-  // Enviar o evento para todos os clientes conectados via WebSocket
   clients.forEach((client) => {
     if (client.readyState === client.OPEN) {
       client.send(JSON.stringify({ type: "generic_event", data: event }));
