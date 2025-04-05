@@ -3,6 +3,7 @@ import { sendTextMessage } from "./messageService";
 import { WebSocketServer } from "ws";
 import axios from "axios";
 import cors from "cors";
+import { sendCreateInstace } from "./service/instanceService";
 
 const app: express.Application = express();
 const PORT = 3000;
@@ -45,6 +46,52 @@ app.post("/send-message", async (req, res) => {
     console.log("Chamando o serviço sendTextMessage para enviar a mensagem...");
 
     const apiResponse = await sendTextMessage({ number, text });
+
+    console.log("Resposta da API externa recebida com sucesso:");
+    console.log(JSON.stringify(apiResponse, null, 2));
+
+    res.json({
+      message: "Mensagem enviada com sucesso!",
+      data: apiResponse,
+    });
+  } catch (error: any) {
+    console.error("Erro ao enviar mensagem para a API externa:");
+    console.error("Mensagem de erro:", error.message);
+    console.error("Detalhes do erro:", error.response?.data || error);
+
+    res.status(500).json({
+      error:
+        error.response?.data || error.message || "Erro ao enviar mensagem.",
+    });
+  }
+});
+
+app.post("/create-instance", async (req, res) => {
+  const { instanceName, number, qrcode, integration, webhookUrl, chain } =
+    req.body;
+
+  console.log("Dados recebidos no corpo da requisição:", {
+    number,
+    instanceName,
+    qrcode,
+  });
+
+  if (!number || !instanceName || !qrcode) {
+    console.error("Número ou texto ausente na requisição.");
+    return res.status(400).json({ error: "Número e texto são obrigatórios." });
+  }
+
+  try {
+    console.log("Chamando o serviço sendTextMessage para enviar a mensagem...");
+
+    const apiResponse = await sendCreateInstace({
+      number,
+      instanceName,
+      qrcode,
+      integration,
+      webhookUrl,
+      chain,
+    });
 
     console.log("Resposta da API externa recebida com sucesso:");
     console.log(JSON.stringify(apiResponse, null, 2));
