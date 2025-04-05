@@ -1,91 +1,40 @@
-/* Estilo geral */
 body {
-  font-family: "Roboto", Arial, sans-serif;
-  background-color: #0a1014;
   margin: 0;
-  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #fff;
 }
 
-/* Tela inicial (menu) */
-.menu-container {
-  text-align: center;
-}
-
-.number-input,
-.message-input {
-  margin: 20px 0;
-}
-
-.number-input label,
-.message-input label {
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.number-input input,
-.message-input textarea {
-  padding: 10px;
-  width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.message-input textarea {
-  height: 100px;
-  resize: none;
-}
-
-.create-chat-btn {
-  padding: 15px 30px;
-  background-color: #056162;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.create-chat-btn:hover {
-  background-color: #065e56;
-}
-
-/* Ocultar elementos */
-.hidden {
-  display: none;
-}
-
-/* Container do chat */
-.chat-container {
-  background: #1e2a33;
-  width: 400px;
-  height: 600px;
+.container {
   display: flex;
   flex-direction: column;
+  width: 400px;
+  height: 90vh;
+  background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 }
 
-/* Cabeçalho do chat */
-.chat-header {
-  background: #2a3942;
+/* Cabeçalho */
+header {
+  background-color: #075e54;
+  color: white;
   padding: 15px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #3c4f5a;
+  gap: 10px;
 }
 
-.contact-photo {
-  width: 50px;
-  height: 50px;
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  background-color: #ddd;
   border-radius: 50%;
-  margin-right: 10px;
+  flex-shrink: 0;
 }
 
 .contact-info {
@@ -93,83 +42,94 @@ body {
   flex-direction: column;
 }
 
-.contact-name {
+.contact-info strong {
   font-size: 16px;
-  font-weight: bold;
 }
 
-.contact-number {
-  font-size: 14px;
-  color: #aebac1;
+.contact-info span {
+  font-size: 12px;
+  color: #e0e0e0;
 }
 
-/* Área do chat */
-.chat {
+/* Área de mensagens */
+#chat {
   flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  background-color: #121b22;
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  background-color: #e5ddd5;
 }
 
-/* Mensagens */
 .message {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 8px;
   max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  position: relative;
   word-wrap: break-word;
-  display: inline-block;
+  font-size: 14px;
 }
 
 .message.sent {
-  background-color: #056162;
+  background-color: #dcf8c6; /* Verde claro mensagem enviada */
   align-self: flex-end;
-  text-align: right;
-  color: #fff;
 }
 
 .message.received {
-  background-color: #202c33;
+  background-color: #ffffff; /* Fundo branco para recebidas */
+  border: 1px solid #ddd;
   align-self: flex-start;
-  text-align: left;
-  color: #d1d7db;
 }
 
-/* Formulário de envio */
-.message-form {
+/* Hora da mensagem */
+.message-time {
+  font-size: 10px;
+  color: #555;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+/* Formulário */
+form {
   display: flex;
   padding: 10px;
-  background-color: #2a3942;
-  border-top: 1px solid #3c4f5a;
+  background-color: #f0f0f0;
 }
 
-.message-form input {
+input[type="text"],
+input[type="number"] {
   flex: 1;
   padding: 10px;
+  margin-right: 10px;
   border: none;
   border-radius: 20px;
-  background-color: #3c4f5a;
-  color: #fff;
-  margin-right: 10px;
   outline: none;
+  background-color: #fff;
+  font-size: 14px;
 }
 
-.message-form input::placeholder {
-  color: #aebac1;
-}
-
-.message-form button {
-  padding: 10px 20px;
-  background-color: #056162;
+button {
+  background-color: #075e54;
   color: white;
   border: none;
+  padding: 10px 15px;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
-.message-form button:hover {
-  background-color: #065e56;
+button:hover {
+  background-color: #064e46;
+}
+
+/* Scroll bonito */
+#chat::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }

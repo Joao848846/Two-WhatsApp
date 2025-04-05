@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atendimento</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="darkmode.css" />
   </head>
   <body>
-    <!-- Tela inicial -->
-    <div id="menu" class="menu-container">
-      <h1>Bem-vindo ao Atendimento</h1>
-      <div class="number-input">
-        <label for="number">Número do destinatário:</label>
+    <div class="container">
+      <button id="darkModeToggle" class="p-2 rounded bg-gray-300 text-black">
+        🌙 Modo Escuro
+      </button>
+      <div class="header">Atendimento WhatsApp</div>
+
+      <!-- Campo de número (mantido exatamente como o script espera) -->
+      <div class="form-group" id="menu">
+        <label for="number">Número do destinatário</label>
         <input
           type="text"
           id="number"
@@ -20,37 +25,34 @@
         />
       </div>
 
-    <!-- Tela de conversa -->
-    <div id="chatScreen" class="chat-container hidden">
-      <!-- Cabeçalho com foto e informações do contato -->
-      <header class="chat-header">
-        <img
-          id="contactPhoto"
-          class="contact-photo"
-          src=""
-          alt="Foto do contato"
-        />
-        <div class="contact-info">
-          <span id="contactName" class="contact-name">Nome do Contato</span>
-          <span id="contactNumber" class="contact-number"
-            >Número do Contato</span
-          >
+      <div class="chat-container" id="chatScreen">
+        <div class="chat-header">
+          <img
+            id="contactPhoto"
+            class="contact-photo"
+            src="https://i.pravatar.cc/100"
+            alt="Foto do contato"
+          />
+          <div>
+            <div id="contactName">Contato</div>
+            <div id="contactNumber">Número</div>
+          </div>
         </div>
-      </header>
 
-      <!-- Área do chat -->
-      <div id="chat" class="chat"></div>
+        <!-- Caixa de mensagens -->
+        <div class="chat" id="chat"></div>
 
-      <!-- Formulário para enviar mensagens -->
-      <form id="messageForm" class="message-form">
-        <input
-          type="text"
-          id="text"
-          placeholder="Digite sua mensagem..."
-          required
-        />
-        <button type="submit">Enviar</button>
-      </form>
+        <!-- Campo de texto e botão (EXATAMENTE como o script espera) -->
+        <form id="messageForm" class="message-form">
+          <input
+            type="text"
+            id="text"
+            placeholder="Digite sua mensagem..."
+            required
+          />
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
     </div>
 
     <script src="scripts.js"></script>

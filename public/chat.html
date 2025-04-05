@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selecione o Contato - Painel de Atendimento</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header {
+        width: 100%;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.2);
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      h2 {
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
+
+      .contacts-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        max-width: 1000px;
+      }
+
+      .contact-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 200px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .contact-card:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .contact-name {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .contact-number {
+        font-size: 14px;
+      }
+
+      footer {
+        margin-top: auto;
+        padding: 15px;
+        text-align: center;
+        font-size: 12px;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Painel de Atendimento - Selecione um Contato</header>
+
+    <h2>Seus Contatos</h2>
+
+    <div class="contacts-container" id="contactsContainer">
+      <!-- Os cards serão inseridos aqui via JavaScript -->
+    </div>
+
+    <footer>Desenvolvido com carinho por nós.</footer>
+
+    <script>
+      const contacts = [
+        { name: "João Victor", number: "5511999999999" },
+        { name: "Maria Souza", number: "5511888888888" },
+        { name: "Carlos Alberto", number: "5511777777777" },
+        { name: "Fernanda Lima", number: "5511666666666" },
+      ];
+
+      const container = document.getElementById("contactsContainer");
+
+      contacts.forEach((contact) => {
+        const card = document.createElement("div");
+        card.className = "contact-card";
+        card.innerHTML = `
+        <div class="contact-name">${contact.name}</div>
+        <div class="contact-number">${contact.number}</div>
+      `;
+        card.onclick = () => {
+          // Abre o chat.html passando o número do contato na URL
+          window.location.href = `chat.html?number=${contact.number}`;
+        };
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>

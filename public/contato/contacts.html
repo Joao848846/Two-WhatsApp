@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seus Contatos</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #ffffff; /* Fundo branco */
+        color: #333; /* Texto escuro pra boa leitura */
+      }
+
+      header {
+        background-color: #25d366; /* Verde WhatsApp clarinho */
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px;
+      }
+
+      .contact-item {
+        background-color: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .contact-item:hover {
+        background-color: #eafff3; /* Um verde bem leve ao hover */
+        transform: translateY(-2px);
+      }
+
+      .contact-item strong {
+        color: #25d366;
+        font-size: 18px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 15px;
+        font-size: 14px;
+        color: #999;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Selecione um Contato</header>
+
+    <ul class="contact-list" id="contactList">
+      <!-- Lista de contatos vai ser inserida dinamicamente -->
+    </ul>
+
+    <footer>Seu atendimento via WhatsApp</footer>
+
+    <script>
+      // Exemplo de lista de contatos simulada
+      const contacts = [
+        { name: "João Victor", number: "5511999999999" },
+        { name: "Maria Silva", number: "5511988888888" },
+        { name: "Carlos Alberto", number: "5511977777777" },
+      ];
+
+      const contactList = document.getElementById("contactList");
+
+      contacts.forEach((contact) => {
+        const li = document.createElement("li");
+        li.className = "contact-item";
+        li.innerHTML = `<strong>${contact.name}</strong><br>${contact.number}`;
+        li.onclick = () => {
+          localStorage.setItem("selectedContact", JSON.stringify(contact));
+          window.location.href = "index.html";
+        };
+        contactList.appendChild(li);
+      });
+    </script>
+  </body>
+</html>
