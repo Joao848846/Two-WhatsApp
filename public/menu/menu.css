@@ -1,0 +1,253 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #1db954, #191414); /* Estilo Spotify */
+  color: #ffffff;
+  padding: 20px;
+  overflow: hidden;
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Menu lateral */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #191414;
+  padding-top: 60px;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.menu.active {
+  left: 0;
+}
+
+.menu-title {
+  color: #1db954;
+  margin: 20px 0;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.menu a {
+  display: block;
+  color: #ffffff;
+  padding: 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 8px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.menu a:hover {
+  background-color: #1db954;
+  color: #ffffff;
+  transform: translateX(5px);
+  box-shadow: 0 0 10px #1db954;
+}
+
+/* Botão de abrir menu */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
+  color: #ffffff;
+  background-color: #1db954;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1100;
+  transition: background 0.3s;
+}
+
+.menu-toggle:hover {
+  background-color: #17a44d;
+}
+
+/* Texto "Menu" abaixo do botão */
+.menu-label {
+  position: fixed;
+  top: 70px;
+  left: 28px;
+  color: #ffffff;
+  font-size: 14px;
+  z-index: 1100;
+}
+
+.menu .close-menu {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  color: #1db954;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.menu .close-menu:hover {
+  color: #1ed760;
+  transform: scale(1.2);
+}
+
+/* Conteúdo principal */
+.main-content {
+  margin-left: 270px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+  text-align: center;
+}
+
+.menu.active ~ .main-content {
+  margin-left: 270px;
+}
+
+/* Animação */
+.animation-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.device,
+.server {
+  font-size: 50px;
+  color: #ffffff;
+}
+
+.submenu-container {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  padding-left: 20px;
+}
+
+.submenu a {
+  display: block;
+  padding: 8px;
+  color: #4caf50;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.submenu a:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 4px;
+}
+
+.open-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 28px;
+  background: linear-gradient(135deg, #1db954, #1ed760);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  z-index: 1001; /* Acima de tudo */
+}
+
+.open-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #1ed760, #1db954);
+}
+
+.open-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.device {
+  position: absolute;
+  left: 270px; /* igual ao menu aberto */
+  top: 50%;
+  transform: translateY(-50%);
+  animation: balancar 2s infinite ease-in-out;
+}
+
+@keyframes balancar {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.server {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  animation: balancar 2s infinite ease-in-out;
+}
+
+.message {
+  position: absolute;
+  left: 270px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: #1db954;
+  animation: moveMessage 3s infinite;
+}
+
+/* Linha zigue-zague */
+.zigzag-line {
+  position: absolute;
+  left: 270px;
+  top: 50%;
+  width: calc(100% - 340px);
+  height: 4px;
+  background-image: linear-gradient(45deg, #1db954 25%, transparent 25%),
+    linear-gradient(-45deg, #1db954 25%, transparent 25%);
+  background-size: 10px 10px;
+  background-repeat: repeat;
+  transform: translateY(-50%);
+}
+
+@keyframes moveMessage {
+  0% {
+    left: 270px;
+    top: 50%;
+  }
+  50% {
+    left: 50%;
+    top: 30%;
+  }
+  100% {
+    left: calc(100% - 100px);
+    top: 20px;
+  }
+}

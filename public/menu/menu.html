@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Profissional</title>
+    <link rel="stylesheet" href="menu.css" />
+  </head>
+  <body>
+    <div class="main-content">
+      <h1>Bem-vindo à GreenTech Soluções!</h1>
+    </div>
+
+    <div class="menu" id="menu">
+      <h2 class="menu-title">Menu</h2>
+      <a href="listar-contatos.html">Listar Contatos</a>
+      <a href="iniciar-conversa.html">Iniciar Conversa</a>
+
+      <div class="submenu-container">
+        <a href="#" onclick="toggleSubmenu(event)">Configurações ▾</a>
+        <div class="submenu" id="submenu">
+          <a href="criar-conexao.html">Criar Conexão</a>
+          <a href="listar-conexao.html">Listar Conexão</a>
+          <a href="criar-permissao.html">Criar Permissão</a>
+        </div>
+      </div>
+
+      <a href="suporte.html">Suporte</a>
+      <a href="sair.html">Sair</a>
+    </div>
+
+    <button class="open-button" onclick="toggleMenu()">☰</button>
+
+    <div class="animation-container">
+      <div class="device">📱</div>
+      <div class="message">💬</div>
+      <div class="server">🖥️</div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
